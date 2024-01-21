@@ -1,6 +1,6 @@
 
 local arguments_as_a_table = {}
 
-for i in arguments_as_a_table do{
-    arguments_as_a_table[i]
-}
+for index, value in ipairs(arguments_as_a_table) do
+    print(value)
+end
