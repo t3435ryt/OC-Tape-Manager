@@ -1,5 +1,5 @@
 
-local arguments_as_a_table = {}
+local arguments_as_a_table = {...}
 
 component = require("component")
 
