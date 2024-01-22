@@ -15,5 +15,8 @@ for index, value in ipairs(getStoredTapes()) do
     print(value)
     for index1, value1 in ipairs(value) do
         print(value1)
+        for index2, value2 in ipairs(value1) do
+            print(value2)
+        end
     end
 end
