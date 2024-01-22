@@ -19,7 +19,7 @@ local function getActiveTape2()
     return transposer.getAllStacks(2).getAll()
 end
 
-print(tape1.isEnd)
+print(tape1.isEnd())
 
 
 
