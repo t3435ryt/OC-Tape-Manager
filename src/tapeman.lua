@@ -26,28 +26,26 @@ local function getActiveTape2()
 end
 
 local function getOpenSlot()
-    for index, value in pairs(transposer.getAllStacks(1).getAll()) do
-        for key, value1 in pairs(value) do
-            print(tostring(key).." : "..tostring(value1))
+    for slot, itemData in pairs(transposer.getAllStacks(1).getAll()) do
+        if itemData.name == "minecraft:air" then
+            return slot
         end
-        if index > 9 then
-            break
-        end
+    end
+    error("No open storage slots in tape storage container", 0)
+end
+
+if tape2.isReady() then
+    if tape2.isEnd() then
+        transposer.transferItem(2,1,1,getOpenSlot())
     end
 end
 
--- if tape2.isReady() then
---     if tape2.isEnd() then
---         transposer.transferItem(2,1,1)
+-- for index, value in pairs(transposer.getAllStacks(1).getAll()) do
+--     print("Slot:"..tostring(index))
+--     for key, value1 in pairs(value) do
+--         print(tostring(key).." : "..tostring(value1))
+--     end
+--     if index > 9 then
+--         break
 --     end
 -- end
-
-for index, value in pairs(transposer.getAllStacks(1).getAll()) do
-    print("Slot:"..tostring(index))
-    for key, value1 in pairs(value) do
-        print(tostring(key).." : "..tostring(value1))
-    end
-    if index > 9 then
-        break
-    end
-end
