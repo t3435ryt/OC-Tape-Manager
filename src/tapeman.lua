@@ -27,9 +27,7 @@ end
 
 local function getOpenSlot()
     for slot, itemData in ipairs(transposer.getAllStacks(1).getAll()) do
-        print(slot)
         if itemData["name"] == "minecraft:air" then
-            print("Found emptry slot")
             return tonumber(slot)
         end
     end
@@ -38,6 +36,11 @@ end
 
 if tape2.isReady() then
     tape2.seek(-math.huge)
+    transposer.transferItems(2,1,1,1,getOpenSlot())
+end
+
+if tape1.isReady() then
+    tape1.seek(-math.huge)
 end
 
 -- for index, value in pairs(transposer.getAllStacks(1).getAll()) do
