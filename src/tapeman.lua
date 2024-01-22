@@ -17,4 +17,5 @@ for index, value in ipairs(getStoredTapes()) do
         print("a")
         print(value1)
     end
+    os.sleep(1)
 end
