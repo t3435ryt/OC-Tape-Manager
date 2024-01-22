@@ -19,12 +19,19 @@ local function getActiveTape2()
     return transposer.getAllStacks(2).getAll()
 end
 
-for index, value in pairs(getStoredTapes()) do
-    print("Slot:"..tostring(index))
-    for key, value1 in pairs(value) do
-        print(tostring(key).." : "..tostring(value1))
-    end
-    if index > 9 then
-        break
-    end
-end
+print(tape1.isEnd)
+
+
+
+
+
+
+-- for index, value in pairs(getStoredTapes()) do
+--     print("Slot:"..tostring(index))
+--     for key, value1 in pairs(value) do
+--         print(tostring(key).." : "..tostring(value1))
+--     end
+--     if index > 9 then
+--         break
+--     end
+-- end
