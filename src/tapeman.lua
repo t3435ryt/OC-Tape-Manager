@@ -29,7 +29,8 @@ local function getOpenSlot()
     for slot, itemData in ipairs(transposer.getAllStacks(1).getAll()) do
         print(slot)
         if itemData["name"] == "minecraft:air" then
-            return slot
+            print("Found emptry slot")
+            return tonumber(slot)
         end
     end
     error("No open storage slots in tape storage container", 0)
