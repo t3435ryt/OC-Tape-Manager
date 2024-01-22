@@ -11,9 +11,9 @@ local function getStoredTapes()
     return transposer.getAllStacks(1).getAll()
 end
 
-for index, value in ipairs(getStoredTapes()) do
+for index, value in pairs(getStoredTapes()) do
     print("Table name:"..tostring(value))
-    for index1, value1 in ipairs(value) do
+    for index1, value1 in pairs(value) do
         print("a")
         print(value1)
     end
