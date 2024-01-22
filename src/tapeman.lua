@@ -3,8 +3,7 @@ local arguments_as_a_table = {...}
 
 component = require("component")
 
-local tape1 = component.proxy("ed6f617e-fc8e-405b-877e-eafbe97fa116")
-local tape2 = component.proxy("a49e98dc-dcb2-49fd-84d3-5927573b4191")
+local tape = component.proxy("c34adf35-ce27-416e-aecc-f9605a58211f")
 local transposer = component.proxy("6208f201-e283-4c8e-8ad5-df470c327d8e")
 
 local function getStoredTapes()
@@ -34,14 +33,26 @@ local function getOpenSlot()
     error("No open storage slots in tape storage container", 0)
 end
 
-if tape2.isReady() then
-    tape2.seek(-math.huge)
-    transposer.transferItem(2,1,1,1,getOpenSlot())
+if tape.isReady() then
+    tape.seek(-math.huge)
+    transposer.transferItem(3,1,1,1,getOpenSlot())
 end
 
-if tape1.isReady() then
-    tape1.seek(-math.huge)
-    transposer.transferItem(3,1,1,1,getOpenSlot())
+local activeSlot = 1
+
+while true do
+    transposer.transferItem(1,3,1,activeSlot,1)
+    tape.seek(-math.huge)
+    tape.play()
+    while not tape.isEnd() do
+        os.sleep(0.1)
+    end
+    tape.seek(-math.huge)
+    transposer.transferItem(3,1,1,1,activeSlot)
+    activeSlot = activeSlot+1
+    if activeSlot > transposer.getInventorySize(1) then
+        activeSlot = 1
+    end
 end
 
 -- for index, value in pairs(transposer.getAllStacks(1).getAll()) do
