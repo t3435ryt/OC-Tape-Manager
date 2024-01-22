@@ -39,6 +39,7 @@ while true do
     transposer.transferItem(1,2,1,activeSlot,1)
     tape.seek(-math.huge)
     tape.play()
+    print("Now playing: "..tostring(tape.getLabel()))
     while not tape.isEnd() do
         os.sleep(0.1)
     end
