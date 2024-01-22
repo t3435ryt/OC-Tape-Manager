@@ -12,7 +12,7 @@ local function getStoredTapes()
 end
 
 for index, value in pairs(getStoredTapes()) do
-    print("Table name:"..tostring(value))
+    print("Slot:"..tostring(index))
     for key, value1 in pairs(value) do
         print(tostring(key).." : "..tostring(value1))
     end
