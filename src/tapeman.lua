@@ -13,9 +13,8 @@ end
 
 for index, value in pairs(getStoredTapes()) do
     print("Table name:"..tostring(value))
-    for index1, value1 in pairs(value) do
-        print("a")
-        print(value1)
+    for key, value1 in pairs(value) do
+        print(tostring(key).." : "..tostring(value1))
     end
     os.sleep(0.2)
 end
