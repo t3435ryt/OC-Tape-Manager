@@ -37,9 +37,7 @@ local function getOpenSlot()
 end
 
 if tape2.isReady() then
-    if tape2.isEnd() then
-        transposer.transferItem(2,1,1,1,getOpenSlot())
-    end
+    tape2.seek(-math.huge)
 end
 
 -- for index, value in pairs(transposer.getAllStacks(1).getAll()) do
