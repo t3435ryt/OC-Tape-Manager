@@ -12,11 +12,8 @@ local function getStoredTapes()
 end
 
 for index, value in ipairs(getStoredTapes()) do
-    print(value)
+    print("Table name:"+tostring(value))
     for index1, value1 in ipairs(value) do
-        print(value1)
-        for index2, value2 in ipairs(value1) do
-            print(index2)
-        end
+        print("Value:"+tostring(value1))
     end
 end
