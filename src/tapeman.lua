@@ -41,6 +41,7 @@ end
 
 if tape1.isReady() then
     tape1.seek(-math.huge)
+    transposer.transferItems(3,1,1,1,getOpenSlot())
 end
 
 -- for index, value in pairs(transposer.getAllStacks(1).getAll()) do
