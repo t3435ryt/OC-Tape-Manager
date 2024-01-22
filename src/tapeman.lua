@@ -38,7 +38,7 @@ end
 
 if tape2.isReady() then
     if tape2.isEnd() then
-        transposer.transferItem(2,1,1,getOpenSlot())
+        transposer.transferItem(2,1,1,1,getOpenSlot())
     end
 end
 
