@@ -13,8 +13,7 @@ end
 
 --Transposer sides
 --  Crate: 1
--- Tape 1: 3
--- Tape 2: 2
+-- Tape: 2
 
 local function getActiveTape1()
     return transposer.getAllStacks(3).getAll()
@@ -35,20 +34,20 @@ end
 
 if tape.isReady() then
     tape.seek(-math.huge)
-    transposer.transferItem(3,1,1,1,getOpenSlot())
+    transposer.transferItem(2,1,1,1,getOpenSlot())
 end
 
 local activeSlot = 1
 
 while true do
-    transposer.transferItem(1,3,1,activeSlot,1)
+    transposer.transferItem(1,2,1,activeSlot,1)
     tape.seek(-math.huge)
     tape.play()
     while not tape.isEnd() do
         os.sleep(0.1)
     end
     tape.seek(-math.huge)
-    transposer.transferItem(3,1,1,1,activeSlot)
+    transposer.transferItem(2,1,1,1,activeSlot)
     activeSlot = activeSlot+1
     if activeSlot > transposer.getInventorySize(1) then
         activeSlot = 1
