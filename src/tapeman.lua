@@ -26,7 +26,7 @@ local function getActiveTape2()
 end
 
 local function getOpenSlot()
-    for slot, itemData in pairs(transposer.getAllStacks(1).getAll()) do
+    for slot, itemData in ipairs(transposer.getAllStacks(1).getAll()) do
         print(slot)
         if itemData.name == "minecraft:air" then
             return slot
