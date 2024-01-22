@@ -27,6 +27,7 @@ end
 
 local function getOpenSlot()
     for slot, itemData in pairs(transposer.getAllStacks(1).getAll()) do
+        print(slot)
         if itemData.name == "minecraft:air" then
             return slot
         end
