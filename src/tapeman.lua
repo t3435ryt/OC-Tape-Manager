@@ -28,7 +28,7 @@ end
 local function getOpenSlot()
     for slot, itemData in ipairs(transposer.getAllStacks(1).getAll()) do
         print(slot)
-        if itemData.name == "minecraft:air" then
+        if itemData["name"] == "minecraft:air" then
             return slot
         end
     end
