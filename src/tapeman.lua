@@ -49,7 +49,7 @@ local keyboardService = coroutine.create(function ()
     end
 end)
 
-keyboardService.resume()
+coroutine.resume(keyboardService)
 
 while true do
     while transposer.getAllStacks(1)[activeSlot]["name"] ~= "computronics:tape" do
