@@ -36,9 +36,9 @@ local function checkKeyboard(_, keyboard_address, char, code, playerName)
     print(char)
     print(code)
     print(playerName)
-    if code == 0xCB then
+    if code == 203 then
         tape.seek(-math.huge)
-    elseif code == 0xCD then
+    elseif code == 205 then
         tape.seek(math.huge)
     end
 end
