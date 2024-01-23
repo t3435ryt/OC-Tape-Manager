@@ -41,43 +41,45 @@ local function checkKeyboard()
     end
 end
 
-local keyboardService = coroutine.create(function ()
-    while running do
-        checkKeyboard()
+-- local keyboardService = coroutine.create(function ()
+--     while running do
+--         checkKeyboard()
+--         os.sleep(0.01)
+--     end
+-- end)
+
+-- coroutine.resume(keyboardService)
+
+while running do
+    while transposer.getAllStacks(1)[activeSlot]["name"] ~= "computronics:tape" do
+        print("Checking slot "..tostring(activeSlot))
+        if activeSlot == 72 then
+            activeSlot = 1
+        else
+            activeSlot = activeSlot + 1
+        end
         os.sleep(0.01)
     end
-end)
-
-coroutine.resume(keyboardService)
-
-coroutine.resume(coroutine.create(function ()
-    while running do
-        while transposer.getAllStacks(1)[activeSlot]["name"] ~= "computronics:tape" do
-            print("Checking slot "..tostring(activeSlot))
-            if activeSlot == 72 then
-                activeSlot = 1
-            else
-                activeSlot = activeSlot + 1
-            end
-            os.sleep(0.01)
-        end
-        print("Pulling tape from slot "..tostring(activeSlot))
-        transposer.transferItem(1,2,1,activeSlot,1)
-        tape.seek(-math.huge)
-        tape.play()
-        print("Now playing: "..tostring(tape.getLabel()))
-        while not tape.isEnd() do
-            os.sleep(0.1)
-        end
-        tape.seek(-math.huge)
-        transposer.transferItem(2,1,1,1,activeSlot)
-        activeSlot = activeSlot + 1
-        if activeSlot > transposer.getInventorySize(1) then
-            print("Ran past last storage slot")
-            activeSlot = 1
-        end
+    print("Pulling tape from slot "..tostring(activeSlot))
+    transposer.transferItem(1,2,1,activeSlot,1)
+    tape.seek(-math.huge)
+    tape.play()
+    print("Now playing: "..tostring(tape.getLabel()))
+    while not tape.isEnd() do
+        checkKeyboard()
+        os.sleep(0.1)
     end
-end))
+    tape.seek(-math.huge)
+    transposer.transferItem(2,1,1,1,activeSlot)
+    activeSlot = activeSlot + 1
+    if activeSlot > transposer.getInventorySize(1) then
+        print("Ran past last storage slot")
+        activeSlot = 1
+    end
+end
+
+
+
 -- for index, value in pairs(transposer.getAllStacks(1).getAll()) do
 --     print("Slot:"..tostring(index))
 --     for key, value1 in pairs(value) do
