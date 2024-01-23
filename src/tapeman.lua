@@ -41,14 +41,7 @@ local function checkKeyboard()
     end
 end
 
--- local keyboardService = coroutine.create(function ()
---     while running do
---         checkKeyboard()
---         os.sleep(0.01)
---     end
--- end)
-
--- coroutine.resume(keyboardService)
+event.listen("key_down", checkKeyboard())
 
 while running do
     while transposer.getAllStacks(1)[activeSlot]["name"] ~= "computronics:tape" do
@@ -66,7 +59,6 @@ while running do
     tape.play()
     print("Now playing: "..tostring(tape.getLabel()))
     while not tape.isEnd() do
-        checkKeyboard()
         os.sleep(0.1)
     end
     tape.seek(-math.huge)
