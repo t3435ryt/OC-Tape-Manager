@@ -46,6 +46,7 @@ end
 local keyboardService = coroutine.create(function ()
     while running do
         checkKeyboard()
+        coroutine.yield()
     end
 end)
 
