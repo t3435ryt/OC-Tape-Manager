@@ -41,7 +41,7 @@ local function checkKeyboard()
     end
 end
 
-event.listen("key_down", checkKeyboard())
+event.listen("key_down", checkKeyboard)
 
 while running do
     while transposer.getAllStacks(1)[activeSlot]["name"] ~= "computronics:tape" do
