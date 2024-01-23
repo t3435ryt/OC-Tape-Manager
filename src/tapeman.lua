@@ -30,7 +30,7 @@ end
 local activeSlot = 1
 
 local function key_pressed(keyboardAddress, char, code, playerName)
-    print(char)
+    print(keyboardAddress)
 end
 
 event.listen("key_down", key_pressed)
