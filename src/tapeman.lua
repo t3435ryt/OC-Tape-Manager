@@ -29,13 +29,14 @@ end
 local activeSlot = 1
 
 while true do
-    while transposer.getAllStacks(1)[activeSlot] ~= "computronics:tape" do
+    while transposer.getAllStacks(1)[activeSlot]["name"] ~= "computronics:tape" do
         print("Checking slot "..tostring(activeSlot))
         if activeSlot == 72 then
             activeSlot = 1
         else
             activeSlot = activeSlot + 1
         end
+        os.sleep(0.01)
     end
     transposer.transferItem(1,2,1,activeSlot,1)
     tape.seek(-math.huge)
