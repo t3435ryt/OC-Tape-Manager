@@ -30,6 +30,7 @@ local activeSlot = 1
 
 while true do
     while transposer.getAllStacks(1)[activeSlot] ~= "computronics:tape" do
+        print("Checking slot "+tostring(activeSlot))
         if activeSlot == 72 then
             activeSlot = 1
         else
