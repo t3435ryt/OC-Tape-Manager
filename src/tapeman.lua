@@ -31,8 +31,7 @@ end
 
 local activeSlot = 1
 
-local function checkKeyboard()
-    local keyboard_address, char, code, playerName = event.pull("key_down")
+local function checkKeyboard(keyboard_address, char, code, playerName)
     print(char)
     if code == 0xCB then
         tape.seek(-math.huge)
