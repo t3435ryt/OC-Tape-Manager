@@ -38,6 +38,7 @@ while true do
         end
         os.sleep(0.01)
     end
+    print("Pulling tape from slot "..tostring(activeSlot))
     transposer.transferItem(1,2,1,activeSlot,1)
     tape.seek(-math.huge)
     tape.play()
@@ -47,8 +48,9 @@ while true do
     end
     tape.seek(-math.huge)
     transposer.transferItem(2,1,1,1,activeSlot)
-    activeSlot = activeSlot+1
+    activeSlot = activeSlot + 1
     if activeSlot > transposer.getInventorySize(1) then
+        print("Ran past last storage slot")
         activeSlot = 1
     end
 end
