@@ -31,25 +31,6 @@ end
 
 local activeSlot = 1
 
-local function checkKeyboard(_, keyboard_address, char, code, playerName)
-    print(keyboard_address)
-    print(char)
-    print(code)
-    print(playerName)
-    if code == 203 then
-        tape.seek(-math.huge)
-    elseif code == 205 then
-        tape.seek(math.huge)
-    end
-end
-
-keyService = event.listen("key_down", checkKeyboard)
-
-cancelService = event.listen("interrupted", function ()
-    event.cancel(keyService)
-    event.cancel(cancelService)
-end)
-
 while running do
     while transposer.getAllStacks(1)[activeSlot]["name"] ~= "computronics:tape" do
         print("Checking slot "..tostring(activeSlot))
