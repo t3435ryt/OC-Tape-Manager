@@ -31,19 +31,25 @@ end
 
 local activeSlot = 1
 
-local function key_pressed(keyboardAddress, char, code, playerName)
-    print(char)
-end
-
-while running do
-    local keyboard_address, char, code, playerName = event.pull("key_down")
-    if code == 0xCB then
-        tape.seek(-math.huge)
-    elseif code == 0xCD then
-        tape.seek(math.huge)
+local function checkKeyboard()
+    while running do
+        local keyboard_address, char, code, playerName = event.pull("key_down")
+        print(char)
+        if code == 0xCB then
+            tape.seek(-math.huge)
+        elseif code == 0xCD then
+            tape.seek(math.huge)
+        end
     end
 end
 
+local keyboardService = coroutine.create(function ()
+    while running do
+        checkKeyboard()
+    end
+end)
+
+keyboardService.resume()
 
 while true do
     while transposer.getAllStacks(1)[activeSlot]["name"] ~= "computronics:tape" do
