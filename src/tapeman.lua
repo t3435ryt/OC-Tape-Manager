@@ -32,7 +32,10 @@ end
 local activeSlot = 1
 
 local function checkKeyboard(keyboard_address, char, code, playerName)
+    print(keyboard_address)
     print(char)
+    print(code)
+    print(playerName)
     if code == 0xCB then
         tape.seek(-math.huge)
     elseif code == 0xCD then
