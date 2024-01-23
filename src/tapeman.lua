@@ -2,10 +2,11 @@
 local arguments_as_a_table = {...}
 
 component = require("component")
+event = require("event")
 
 local tape = component.proxy("c34adf35-ce27-416e-aecc-f9605a58211f")
 local transposer = component.proxy("6208f201-e283-4c8e-8ad5-df470c327d8e")
-
+local keyboard = component.getPrimary("keyboard")
 
 --Transposer sides
 --  Crate: 1
@@ -27,6 +28,12 @@ if tape.isReady() then
 end
 
 local activeSlot = 1
+
+local function key_pressed(keyboardAddress, char, code, playerName)
+    print(char)
+end
+
+event.listen("key_down", key_pressed)
 
 while true do
     while transposer.getAllStacks(1)[activeSlot]["name"] ~= "computronics:tape" do
