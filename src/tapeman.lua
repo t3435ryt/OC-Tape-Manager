@@ -43,7 +43,12 @@ local function checkKeyboard(_, keyboard_address, char, code, playerName)
     end
 end
 
-event.listen("key_down", checkKeyboard)
+keyService = event.listen("key_down", checkKeyboard)
+
+cancelService = event.listen("interrupted", function ()
+    event.cancel(keyService)
+    event.cancel(cancelService)
+end)
 
 while running do
     while transposer.getAllStacks(1)[activeSlot]["name"] ~= "computronics:tape" do
