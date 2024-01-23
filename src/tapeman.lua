@@ -31,7 +31,7 @@ end
 
 local activeSlot = 1
 
-local function checkKeyboard(keyboard_address, char, code, playerName)
+local function checkKeyboard(_, keyboard_address, char, code, playerName)
     print(keyboard_address)
     print(char)
     print(code)
