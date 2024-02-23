@@ -1,18 +1,12 @@
-
 local arguments_as_a_table = {...}
 
-component = require("component")
-event = require("event")
+local component = require("component")
 
 local running = true
 
 local tape = component.proxy("c34adf35-ce27-416e-aecc-f9605a58211f")
 local transposer = component.proxy("6208f201-e283-4c8e-8ad5-df470c327d8e")
 local keyboard = component.getPrimary("keyboard")
-
---Transposer sides
---  Crate: 1
--- Tape: 2
 
 local function getOpenSlot()
     for slot, itemData in ipairs(transposer.getAllStacks(1).getAll()) do
@@ -33,7 +27,6 @@ local activeSlot = 1
 
 while running do
     while transposer.getAllStacks(1)[activeSlot]["name"] ~= "computronics:tape" do
-        print("Checking slot "..tostring(activeSlot))
         if activeSlot == 72 then
             activeSlot = 1
         else
@@ -57,15 +50,3 @@ while running do
         activeSlot = 1
     end
 end
-
-
-
--- for index, value in pairs(transposer.getAllStacks(1).getAll()) do
---     print("Slot:"..tostring(index))
---     for key, value1 in pairs(value) do
---         print(tostring(key).." : "..tostring(value1))
---     end
---     if index > 9 then
---         break
---     end
--- end
